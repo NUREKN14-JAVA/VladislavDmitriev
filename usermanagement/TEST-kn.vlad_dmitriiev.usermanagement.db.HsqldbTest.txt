@@ -2,8 +2,8 @@ Testsuite: kn.vlad_dmitriiev.usermanagement.db.HsqldbTest
 Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 sec
 
 	Caused an ERROR
-kn.dmytro_grazhevskiy.usermanagement.db.HsqldbTest
-java.lang.ClassNotFoundException: kn.komir_nastya.usermanagement.db.HsqldbTest
+kn.vlad_dmitriiev.usermanagement.db.HsqldbTest
+java.lang.ClassNotFoundException: kn.vlad_dmitriiev.usermanagement.db.HsqldbTest
 	at java.net.URLClassLoader.findClass(Unknown Source)
 	at java.lang.ClassLoader.loadClass(Unknown Source)
 	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)

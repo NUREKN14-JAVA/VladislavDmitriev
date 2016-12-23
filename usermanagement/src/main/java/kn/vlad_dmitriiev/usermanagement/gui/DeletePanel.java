@@ -1,4 +1,4 @@
-package kn.komir_nastya.usermanagement.gui;
+package kn.vlad_dmitriiev.usermanagement.gui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -11,9 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import kn.komir_nastya.usermanagement.User;
-import kn.komir_nastya.usermanagement.db.DatabaseException;
-import kn.komir_nastya.usermanagement.util.Messages;
+import kn.vlad_dmitriiev.usermanagement.User;
+import kn.vlad_dmitriiev.usermanagement.db.DatabaseException;
+import kn.vlad_dmitriiev.usermanagement.util.Messages;
 
 public class DeletePanel extends JPanel implements ActionListener {
 
