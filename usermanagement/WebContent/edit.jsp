@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<jsp:useBean id="user" class="kn.vlad_dmitriiev.usermanagement.User" scope="session"/>
+<jsp:useBean id="user" class="kn.komir_nastya.usermanagement.User" scope="session"/>
 <html>
 <head><title>User management. Edit</title></head>
 <body>

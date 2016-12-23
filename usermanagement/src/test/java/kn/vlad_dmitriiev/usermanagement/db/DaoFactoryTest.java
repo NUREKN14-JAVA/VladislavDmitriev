@@ -1,4 +1,5 @@
-package kn.vlad_dmitriiev
+package kn.vlad_dmitriiev.usermanagement.db;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
