@@ -12,7 +12,7 @@ import java.sql.Date;
 
 import kn.vlad_dmitriiev.usermanagement.User;
 
- class HsqldbUserDao implements UserDao {
+ public class HsqldbUserDao implements UserDao {
 
 private static final String SELECT_ALL_QUERY = "SELECT id, firstname, lastname, dateofbirth FROM users";
 private static final String INSERT_QUERY = "INSERT INTO users(firstname, lastname, dateofbirth) VALUES (?, ?, ?)";
@@ -20,7 +20,6 @@ private ConnectionFactory connectionFactory;
 private static final String FIND_QUERY = "SELECT id, firstname, lastname, dateofbirth FROM users WHERE id=?";
 private static final String UPDATE_QUERY = "UPDATE users SET firstname=?, lastname=?, dateofbirth=? WHERE id=?";
 private static final String DELETE_QUERY = "DELETE FROM users WHERE id=?";
-private static final String FIND_BY_NAMES_QUERY = "SELECT id, firstname, lastname, dateofbirth FROM users WHERE firstname=? AND lastname=?";
 
 public HsqldbUserDao() {
 	//super();
@@ -72,7 +71,7 @@ public void setConnectionFactory(ConnectionFactory connectionFactory) {
 	}
 
 
-	public void update(User user) throws DatabaseException {
+	public User update(User user) throws DatabaseException {
 	       try {
 	            Connection connection = connectionFactory.createConnection();
 	            PreparedStatement statement = connection
@@ -87,14 +86,16 @@ public void setConnectionFactory(ConnectionFactory connectionFactory) {
 	            }
 	            statement.close();
 	            connection.close();
+	            return user;
 	        } catch (DatabaseException e) {
 	            throw e;
 	        } catch (SQLException e) {
 	            throw new DatabaseException(e);
 	        }
+		
 	}
 
-	public void delete(User user) throws DatabaseException {
+	public User delete(User user) throws DatabaseException {
 		try {
             Connection connection = connectionFactory.createConnection();
             PreparedStatement statement = connection
@@ -106,6 +107,7 @@ public void setConnectionFactory(ConnectionFactory connectionFactory) {
             }
             statement.close();
             connection.close();
+            return user;
         } catch (DatabaseException e) {
             throw e;
         } catch (SQLException e) {
@@ -166,33 +168,6 @@ public void setConnectionFactory(ConnectionFactory connectionFactory) {
 	}
 		return result;
 	}
-	
-    public Collection find(String firstName, String lastName)
-            throws DatabaseException {
-        Collection result = new LinkedList();
-        try {
-            Connection connection = connectionFactory.createConnection();
-            PreparedStatement statement = connection.prepareStatement(FIND_BY_NAMES_QUERY);
-            statement.setString(1, firstName);
-            statement.setString(2, lastName);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                User user = new User();
-                user.setId(new Long(resultSet.getLong(1)));
-                user.setFirstName(resultSet.getString(2));
-                user.setLastName(resultSet.getString(3));
-                user.setDateOfBirth(resultSet.getDate(4));
-                result.add(user);
-            }
-            resultSet.close();
-            statement.close();
-            connection.close();
-        } catch (DatabaseException e) {
-            throw e;
-        } catch (SQLException e) {
-            throw new DatabaseException(e);
-        }
-        	return result;
-    }
+
 
 }
